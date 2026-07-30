@@ -1,0 +1,48 @@
+# ============================
+# Environment / Secrets
+# ============================
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+*.env.local
+
+# ============================
+# Docker
+# ============================
+docker-compose.override.yml
+
+# ============================
+# OS Files
+# ============================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.nfs*
+
+# ============================
+# IDE / Editor
+# ============================
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+*.code-workspace
+
+# ============================
+# Logs
+# ============================
+*.log
+npm-debug.log*
+
+# ============================
+# System / Docker data volumes
+# (actual monitor data is stored in named volume, not in repo)
+# ============================
+data/
