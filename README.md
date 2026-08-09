@@ -1,43 +1,67 @@
-# Uptime Kuma — Uptime Monitoring Service
-
-[![Status](https://img.shields.io/badge/status-live-brightgreen)](https://uptime.bits.co.id)
-[![Uptime Kuma](https://img.shields.io/badge/powered%20by-Uptime%20Kuma-blue)](https://github.com/louislam/uptime-kuma)
-
-> Production-grade uptime monitoring solution deployed and managed by **Banten IT Solutions**  
-> 🌐 [https://bits.co.id](https://bits.co.id)
+<div align="center">
+  <h1>Uptime Kuma — Uptime Monitoring Service</h1>
+  <p>
+    <a href="https://uptime.bits.co.id">
+      <img src="https://img.shields.io/badge/uptime.bits.co.id-Online-00C853?style=for-the-badge&logo=statuspage&logoColor=white" alt="uptime.bits.co.id Online" />
+    </a>
+  </p>
+  <p>
+    Production uptime monitoring for websites, APIs, and services
+  </p>
+  <br>
+  <p>
+    <img src="https://img.shields.io/badge/Uptime%20Kuma-5C2D91?style=flat&logo=uptime-kuma&logoColor=white" alt="Uptime Kuma" />
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker" />
+    <img src="https://img.shields.io/badge/Docker%20Compose-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker Compose" />
+    <img src="https://img.shields.io/badge/SQLite-003B57?style=flat&logo=sqlite&logoColor=white" alt="SQLite" />
+    <img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="MIT License" />
+  </p>
+</div>
 
 ---
 
-## 📋 Overview
+## ✨ Overview
 
-This repository contains the **Docker Compose deployment** for [Uptime Kuma](https://github.com/louislam/uptime-kuma), a self-hosted, open-source uptime monitoring tool. It tracks the availability and response time of websites, APIs, and services — with rich notifications, beautiful status pages, and a modern dashboard.
+This repository contains Docker Compose deployment for [Uptime Kuma](https://github.com/louislam/uptime-kuma), a self-hosted uptime monitoring tool used to track availability and response time for websites, APIs, and internal services.
 
 **Live instance:** [https://uptime.bits.co.id](https://uptime.bits.co.id)
 
 ---
 
-## 🏗️ Architecture
+## 🛠️ Features
 
-```
-┌──────────────────────────────────────────────────┐
-│                   Docker Host                      │
-│  ┌────────────────────────────────────────────┐   │
-│  │           Uptime Kuma Container              │   │
-│  │  ┌──────────┐   ┌───────────────────────┐   │   │
-│  │  │  Node.js  │──▶│  SQLite (persistent)  │   │   │
-│  │  └──────────┘   └───────────────────────┘   │   │
-│  │         │                                      │   │
-│  │         ▼                                      │   │
-│  │  ┌───────────────────────────────────────┐   │   │
-│  │  │  Health Check Engine (HTTP/Ping/Port)  │   │   │
-│  │  └───────────────────────────────────────┘   │   │
-│  └────────────────────────────────────────────┘   │
-│         │                                          │
-│         ▼                                          │
-│  ┌────────────────────────────────────────────┐   │
-│  │  Persistent Volume: uptime-kuma-data        │   │
-│  └────────────────────────────────────────────┘   │
-└──────────────────────────────────────────────────┘
+| Feature | Description |
+|---------|-------------|
+| **Service Monitoring** | HTTP, ping, port, and browser checks |
+| **Notification Channels** | Email, Telegram, Slack, Discord, and more |
+| **Status Pages** | Public or private service status pages |
+| **Persistent Storage** | SQLite data stored in Docker volume |
+| **Auto Restart** | Container restarts unless explicitly stopped |
+| **Health Check** | Container health probe for API endpoint |
+| **Resource Limits** | CPU and memory limits configured |
+| **Log Rotation** | JSON log rotation enabled |
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Application** | Uptime Kuma |
+| **Runtime** | Docker, Docker Compose |
+| **Storage** | SQLite in persistent volume |
+| **Deployment** | Containerized self-hosted stack |
+
+---
+
+## 📁 Project Structure
+
+```text
+uptime.bits.co.id/
+├── .env.example          # Environment template
+├── docker-compose.yml    # Uptime Kuma service definition
+├── README.md             # Project documentation
+└── LICENSE               # MIT license
 ```
 
 ---
@@ -46,34 +70,28 @@ This repository contains the **Docker Compose deployment** for [Uptime Kuma](htt
 
 ### Prerequisites
 
-- Docker Engine ≥ 20.10.x
-- Docker Compose ≥ 2.x
-- A Linux server with public access (for external monitoring)
+- Docker Engine 20.10+
+- Docker Compose v2+
+- Linux server or VM
 
-### Installation
+### Setup
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/your-org/uptime-kuma.git
-cd uptime-kuma
-
-# 2. Create environment configuration
+git clone https://github.com/BITS-Cloud-Platform/uptime.bits.co.id.git
+cd uptime.bits.co.id
 cp .env.example .env
-# Edit .env to customize port and host if needed
-
-# 3. Launch the service
 docker compose up -d
 ```
 
-The dashboard will be available at **http://localhost:3001** (or your configured port).
+Open dashboard at `http://localhost:3001` or configured port.
 
-### First-Time Setup
+### First Run
 
-1. Open the dashboard in your browser
-2. Create an administrator account
-3. Start adding monitors for your services
-4. Configure notification channels (Email, Telegram, Slack, Discord, etc.)
-5. (Optional) Publish a public status page
+1. Open dashboard in browser
+2. Create administrator account
+3. Add monitors for services
+4. Configure notification channels
+5. Publish status page if needed
 
 ---
 
@@ -81,20 +99,19 @@ The dashboard will be available at **http://localhost:3001** (or your configured
 
 ### Environment Variables
 
-| Variable            | Default       | Description                            |
-|---------------------|---------------|----------------------------------------|
-| `UPTIME_KUMA_PORT`  | `3001`        | Host port mapped to container port 3001|
-| `UPTIME_KUMA_HOST`  | `0.0.0.0`     | Host interface to bind to              |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `UPTIME_KUMA_PORT` | `3001` | Host port mapped to container port 3001 |
+| `UPTIME_KUMA_HOST` | `0.0.0.0` | Host interface bind address |
 
-### Docker Compose
+### Docker Compose Notes
 
-The service includes:
-
-- **Auto-restart** — container restarts unless explicitly stopped
-- **Health check** — validates the API health endpoint every 30 seconds
-- **Resource limits** — capped at 0.5 CPU cores and 256 MB RAM
-- **Log rotation** — capped at 10 MB per file, maximum 3 rotated files
-- **Named volume** — `uptime-kuma-data` persists the SQLite database and monitor configurations
+- Persistent volume: `uptime-kuma-data`
+- Health check: `/api/health`
+- Restart policy: `unless-stopped`
+- Memory limit: `256M`
+- CPU limit: `0.5`
+- Log rotation: `10m`, max `3` files
 
 ---
 
@@ -107,27 +124,27 @@ docker compose logs -f uptime-kuma
 # Restart service
 docker compose restart uptime-kuma
 
-# Update to latest version
+# Update image
 docker compose pull uptime-kuma
 docker compose up -d
 
-# Backup monitor data
+# Backup data
 docker run --rm -v uptime-kuma-data:/data -v $(pwd):/backup alpine \
   tar czf /backup/uptime-kuma-backup-$(date +%Y%m%d).tar.gz -C /data .
 ```
 
 ---
 
-## 🔒 Security Considerations
+## 🔒 Security Notes
 
-- The `.env` file contains environment-specific configuration and is **excluded** from version control via `.gitignore`
-- Sensitive monitor credentials (passwords, API tokens, notification keys) are stored **only** in the Docker volume, never in this repository
-- Access to the live instance should be restricted with reverse-proxy authentication (e.g., Authelia, OAuth2 Proxy) for production deployments
-- All traffic is served over **HTTPS** via a TLS-terminating reverse proxy (e.g., Nginx, Caddy, Traefik)
+- `.env` stays out of version control
+- Monitor credentials stay inside Docker volume
+- Production access should sit behind reverse-proxy auth
+- HTTPS should terminate at proxy layer
 
 ---
 
-## 🤝 Credits & Maintainer
+## 🤝 Credits
 
 <p align="center">
   <a href="https://bits.co.id">
@@ -135,21 +152,13 @@ docker run --rm -v uptime-kuma-data:/data -v $(pwd):/backup alpine \
   </a>
 </p>
 
-This project is **deployed, maintained, and monitored** by
+Managed by **Banten IT Solutions**.
 
-### **Banten IT Solutions**
-
-| | |
-|---|---|
-| **Website** | [https://bits.co.id](https://bits.co.id) |
-| **Services** | Web Development, IT Infrastructure, Cloud Solutions, Monitoring |
-| **Location** | Banten, Indonesia |
-
-For professional IT solutions — including server monitoring, cloud infrastructure, and web development — contact **Banten IT Solutions**.
+- Website: [https://bits.co.id](https://bits.co.id)
+- Live service: [https://uptime.bits.co.id](https://uptime.bits.co.id)
 
 ---
 
 ## 📄 License
 
-This deployment configuration is provided under the [MIT License](LICENSE).  
-The underlying [Uptime Kuma](https://github.com/louislam/uptime-kuma) software is licensed under the MIT License by Louis Lam.
+Distributed under MIT License. See [`LICENSE`](LICENSE).
