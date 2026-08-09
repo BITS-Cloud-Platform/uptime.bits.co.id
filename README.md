@@ -1,8 +1,8 @@
 <div align="center">
-  <h1>Uptime Kuma — Uptime Monitoring Service</h1>
+  <h1>BITS Uptime Monitoring</h1>
   <p>
     <a href="https://uptime.bits.co.id">
-      <img src="https://img.shields.io/badge/uptime.bits.co.id-Online-00C853?style=for-the-badge&logo=statuspage&logoColor=white" alt="uptime.bits.co.id Online" />
+      <img src="https://img.shields.io/badge/BITS%20Uptime%20Monitoring-Online-00C853?style=for-the-badge&logo=statuspage&logoColor=white" alt="BITS Uptime Monitoring Online" />
     </a>
   </p>
   <p>
@@ -55,7 +55,7 @@ This repository contains Docker Compose deployment for [Uptime Kuma](https://git
 ## 📁 Project Structure
 
 ```text
-uptime.bits.co.id/
+bits-uptime-monitoring/
 ├── .env.example          # Environment template
 ├── docker-compose.yml    # Uptime Kuma service definition
 ├── README.md             # Project documentation
@@ -75,8 +75,8 @@ uptime.bits.co.id/
 ### Setup
 
 ```bash
-git clone https://github.com/BITS-Cloud-Platform/uptime.bits.co.id.git
-cd uptime.bits.co.id
+git clone https://github.com/BITS-Cloud-Platform/bits-uptime-monitoring.git
+cd bits-uptime-monitoring
 cp .env.example .env
 docker compose up -d
 ```
