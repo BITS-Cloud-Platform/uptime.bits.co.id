@@ -144,21 +144,6 @@ docker run --rm -v uptime-kuma-data:/data -v $(pwd):/backup alpine \
 
 ---
 
-## 🤝 Credits
-
-<p align="center">
-  <a href="https://bits.co.id">
-    <img src="https://bits.co.id/assets/images/logo.png" alt="Banten IT Solutions" width="200"/>
-  </a>
-</p>
-
-Managed by **Banten IT Solutions**.
-
-- Website: [https://bits.co.id](https://bits.co.id)
-- Live service: [https://uptime.bits.co.id](https://uptime.bits.co.id)
-
----
-
 ## 📄 License
 
 Distributed under MIT License. See [`LICENSE`](LICENSE).
