@@ -144,6 +144,14 @@ docker run --rm -v uptime-kuma-data:/data -v $(pwd):/backup alpine \
 
 ---
 
+---
+
+<div align="center">
+  <strong>Uptime Kuma — Uptime Monitoring Service</strong>
+  <br>
+  Maintained by <a href="https://bits.co.id"><strong>Banten IT Solutions</strong></a>
+</div>
+
 ## 📄 License
 
 Distributed under MIT License. See [`LICENSE`](LICENSE).
