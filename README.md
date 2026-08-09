@@ -24,8 +24,6 @@
 
 This repository contains Docker Compose deployment for [Uptime Kuma](https://github.com/louislam/uptime-kuma), a self-hosted uptime monitoring tool used to track availability and response time for websites, APIs, and internal services.
 
-**Live instance:** [https://uptime.bits.co.id](https://uptime.bits.co.id)
-
 ---
 
 ## 🛠️ Features
